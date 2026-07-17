@@ -1,0 +1,71 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x5c657917fd00 .scope module, "decoder2to4_tb" "decoder2to4_tb" 2 1;
+ .timescale 0 0;
+v0x5c6579192f10_0 .var "A", 0 0;
+v0x5c6579192fd0_0 .var "B", 0 0;
+v0x5c65791930a0_0 .net "Y0", 0 0, L_0x5c65791935e0;  1 drivers
+v0x5c65791931a0_0 .net "Y1", 0 0, L_0x5c6579193740;  1 drivers
+v0x5c6579193270_0 .net "Y2", 0 0, L_0x5c6579193830;  1 drivers
+v0x5c6579193360_0 .net "Y3", 0 0, L_0x5c65791938f0;  1 drivers
+S_0x5c657917fe90 .scope module, "uut" "decoder2to4" 2 6, 3 1 0, S_0x5c657917fd00;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Y0";
+    .port_info 3 /OUTPUT 1 "Y1";
+    .port_info 4 /OUTPUT 1 "Y2";
+    .port_info 5 /OUTPUT 1 "Y3";
+L_0x5c6579193430 .functor NOT 1, v0x5c6579192f10_0, C4<0>, C4<0>, C4<0>;
+L_0x5c6579193520 .functor NOT 1, v0x5c6579192fd0_0, C4<0>, C4<0>, C4<0>;
+L_0x5c65791935e0 .functor AND 1, L_0x5c6579193430, L_0x5c6579193520, C4<1>, C4<1>;
+L_0x5c6579193740 .functor AND 1, L_0x5c6579193430, v0x5c6579192fd0_0, C4<1>, C4<1>;
+L_0x5c6579193830 .functor AND 1, v0x5c6579192f10_0, L_0x5c6579193520, C4<1>, C4<1>;
+L_0x5c65791938f0 .functor AND 1, v0x5c6579192f10_0, v0x5c6579192fd0_0, C4<1>, C4<1>;
+v0x5c657916de60_0 .net "A", 0 0, v0x5c6579192f10_0;  1 drivers
+v0x5c65791928b0_0 .net "B", 0 0, v0x5c6579192fd0_0;  1 drivers
+v0x5c6579192970_0 .net "Y0", 0 0, L_0x5c65791935e0;  alias, 1 drivers
+v0x5c6579192a40_0 .net "Y1", 0 0, L_0x5c6579193740;  alias, 1 drivers
+v0x5c6579192b00_0 .net "Y2", 0 0, L_0x5c6579193830;  alias, 1 drivers
+v0x5c6579192c10_0 .net "Y3", 0 0, L_0x5c65791938f0;  alias, 1 drivers
+v0x5c6579192cd0_0 .net "na", 0 0, L_0x5c6579193430;  1 drivers
+v0x5c6579192d90_0 .net "nb", 0 0, L_0x5c6579193520;  1 drivers
+    .scope S_0x5c657917fd00;
+T_0 ;
+    %vpi_call 2 11 "$monitor", "%b %b -> %b %b %b %b", v0x5c6579192f10_0, v0x5c6579192fd0_0, v0x5c65791930a0_0, v0x5c65791931a0_0, v0x5c6579193270_0, v0x5c6579193360_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5c6579192f10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5c6579192fd0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5c6579192f10_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5c6579192fd0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5c6579192f10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5c6579192fd0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5c6579192f10_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5c6579192fd0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 26 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "decoder2to4tb.v";
+    "decoder2to4.v";
