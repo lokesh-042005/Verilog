@@ -1,0 +1,82 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x5e28110c4230 .scope module, "demux1to4tb" "demux1to4tb" 2 1;
+ .timescale 0 0;
+v0x5e28110d8ac0_0 .var "I", 0 0;
+v0x5e28110d8b80_0 .var "S0", 0 0;
+v0x5e28110d8c50_0 .var "S1", 0 0;
+v0x5e28110d8d50_0 .net "Y0", 0 0, L_0x5e28110d9210;  1 drivers
+v0x5e28110d8e20_0 .net "Y1", 0 0, L_0x5e28110d93c0;  1 drivers
+v0x5e28110d8ec0_0 .net "Y2", 0 0, L_0x5e28110d94b0;  1 drivers
+v0x5e28110d8f90_0 .net "Y3", 0 0, L_0x5e28110d9570;  1 drivers
+S_0x5e28110c43c0 .scope module, "uut" "demux1to4" 2 12, 3 1 0, S_0x5e28110c4230;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "I";
+    .port_info 1 /INPUT 1 "S1";
+    .port_info 2 /INPUT 1 "S0";
+    .port_info 3 /OUTPUT 1 "Y0";
+    .port_info 4 /OUTPUT 1 "Y1";
+    .port_info 5 /OUTPUT 1 "Y2";
+    .port_info 6 /OUTPUT 1 "Y3";
+L_0x5e28110d9060 .functor NOT 1, v0x5e28110d8c50_0, C4<0>, C4<0>, C4<0>;
+L_0x5e28110d9150 .functor NOT 1, v0x5e28110d8b80_0, C4<0>, C4<0>, C4<0>;
+L_0x5e28110d9210 .functor AND 1, v0x5e28110d8ac0_0, L_0x5e28110d9060, L_0x5e28110d9150, C4<1>;
+L_0x5e28110d93c0 .functor AND 1, v0x5e28110d8ac0_0, L_0x5e28110d9060, v0x5e28110d8b80_0, C4<1>;
+L_0x5e28110d94b0 .functor AND 1, v0x5e28110d8ac0_0, v0x5e28110d8c50_0, L_0x5e28110d9150, C4<1>;
+L_0x5e28110d9570 .functor AND 1, v0x5e28110d8ac0_0, v0x5e28110d8c50_0, v0x5e28110d8b80_0, C4<1>;
+v0x5e28110b2630_0 .net "I", 0 0, v0x5e28110d8ac0_0;  1 drivers
+v0x5e28110d8380_0 .net "S0", 0 0, v0x5e28110d8b80_0;  1 drivers
+v0x5e28110d8440_0 .net "S1", 0 0, v0x5e28110d8c50_0;  1 drivers
+v0x5e28110d8510_0 .net "Y0", 0 0, L_0x5e28110d9210;  alias, 1 drivers
+v0x5e28110d85d0_0 .net "Y1", 0 0, L_0x5e28110d93c0;  alias, 1 drivers
+v0x5e28110d86e0_0 .net "Y2", 0 0, L_0x5e28110d94b0;  alias, 1 drivers
+v0x5e28110d87a0_0 .net "Y3", 0 0, L_0x5e28110d9570;  alias, 1 drivers
+v0x5e28110d8860_0 .net "nS0", 0 0, L_0x5e28110d9150;  1 drivers
+v0x5e28110d8920_0 .net "nS1", 0 0, L_0x5e28110d9060;  1 drivers
+    .scope S_0x5e28110c4230;
+T_0 ;
+    %vpi_call 2 24 "$monitor", "I=%b S1=%b S0=%b Y0=%b Y1=%b Y2=%b Y3=%b", v0x5e28110d8ac0_0, v0x5e28110d8c50_0, v0x5e28110d8b80_0, v0x5e28110d8d50_0, v0x5e28110d8e20_0, v0x5e28110d8ec0_0, v0x5e28110d8f90_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8ac0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5e28110d8c50_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5e28110d8b80_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8ac0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5e28110d8c50_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8b80_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8ac0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8c50_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x5e28110d8b80_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8ac0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8c50_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x5e28110d8b80_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 32 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "demux1to4tb.v";
+    "demux1to4.v";
