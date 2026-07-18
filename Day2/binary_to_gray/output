@@ -1,0 +1,121 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x63131c09f6e0 .scope module, "binary_to_graytb" "binary_to_graytb" 2 1;
+ .timescale 0 0;
+v0x63131c0bc520_0 .var "B", 3 0;
+v0x63131c0bc5e0_0 .net "G", 3 0, L_0x63131c0bcd70;  1 drivers
+S_0x63131c09f870 .scope module, "uut" "binary_to_gray" 2 7, 3 1 0, S_0x63131c09f6e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "B";
+    .port_info 1 /OUTPUT 4 "G";
+L_0x63131c0bc6b0 .functor BUF 1, L_0x63131c0bc780, C4<0>, C4<0>, C4<0>;
+L_0x63131c0bc870 .functor XOR 1, L_0x63131c0bc930, L_0x63131c0bca20, C4<0>, C4<0>;
+L_0x63131c0bcb10 .functor XOR 1, L_0x63131c0bcbb0, L_0x63131c0bcc80, C4<0>, C4<0>;
+L_0x63131c0bcf90 .functor XOR 1, L_0x63131c0bd050, L_0x63131c0bd140, C4<0>, C4<0>;
+v0x63131c09fa50_0 .net "B", 3 0, v0x63131c0bc520_0;  1 drivers
+v0x63131c0bba10_0 .net "G", 3 0, L_0x63131c0bcd70;  alias, 1 drivers
+v0x63131c0bbaf0_0 .net *"_ivl_1", 0 0, L_0x63131c0bc6b0;  1 drivers
+v0x63131c0bbbb0_0 .net *"_ivl_11", 0 0, L_0x63131c0bca20;  1 drivers
+v0x63131c0bbc90_0 .net *"_ivl_13", 0 0, L_0x63131c0bcb10;  1 drivers
+v0x63131c0bbdc0_0 .net *"_ivl_16", 0 0, L_0x63131c0bcbb0;  1 drivers
+v0x63131c0bbea0_0 .net *"_ivl_18", 0 0, L_0x63131c0bcc80;  1 drivers
+v0x63131c0bbf80_0 .net *"_ivl_20", 0 0, L_0x63131c0bcf90;  1 drivers
+v0x63131c0bc060_0 .net *"_ivl_24", 0 0, L_0x63131c0bd050;  1 drivers
+v0x63131c0bc140_0 .net *"_ivl_26", 0 0, L_0x63131c0bd140;  1 drivers
+v0x63131c0bc220_0 .net *"_ivl_4", 0 0, L_0x63131c0bc780;  1 drivers
+v0x63131c0bc300_0 .net *"_ivl_6", 0 0, L_0x63131c0bc870;  1 drivers
+v0x63131c0bc3e0_0 .net *"_ivl_9", 0 0, L_0x63131c0bc930;  1 drivers
+L_0x63131c0bc780 .part v0x63131c0bc520_0, 3, 1;
+L_0x63131c0bc930 .part v0x63131c0bc520_0, 3, 1;
+L_0x63131c0bca20 .part v0x63131c0bc520_0, 2, 1;
+L_0x63131c0bcbb0 .part v0x63131c0bc520_0, 2, 1;
+L_0x63131c0bcc80 .part v0x63131c0bc520_0, 1, 1;
+L_0x63131c0bcd70 .concat8 [ 1 1 1 1], L_0x63131c0bcf90, L_0x63131c0bcb10, L_0x63131c0bc870, L_0x63131c0bc6b0;
+L_0x63131c0bd050 .part v0x63131c0bc520_0, 1, 1;
+L_0x63131c0bd140 .part v0x63131c0bc520_0, 0, 1;
+    .scope S_0x63131c09f6e0;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "binary_to_gray.vcd" {0 0 0};
+    %vpi_call 2 15 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x63131c09f6e0 {0 0 0};
+    %vpi_call 2 17 "$display", " Binary | Gray " {0 0 0};
+    %vpi_call 2 18 "$display", "----------------" {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 20 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 21 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 22 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 23 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 24 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 25 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 26 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 27 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 28 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 9, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 29 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 10, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 30 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 11, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 31 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 32 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 33 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 14, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 34 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %pushi/vec4 15, 0, 4;
+    %store/vec4 v0x63131c0bc520_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 35 "$display", "  %b   | %b", v0x63131c0bc520_0, v0x63131c0bc5e0_0 {0 0 0};
+    %vpi_call 2 37 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "binary_to_graytb.v";
+    "binary_to_gray.v";
