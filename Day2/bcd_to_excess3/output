@@ -1,0 +1,65 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x5e44dc2ca0f0 .scope module, "bcd_to_excess3tb" "bcd_to_excess3tb" 2 1;
+ .timescale 0 0;
+v0x5e44dc2f0780_0 .var "BCD", 3 0;
+v0x5e44dc2f0870_0 .net "EX3", 3 0, L_0x5e44dc2f0970;  1 drivers
+S_0x5e44dc2dd730 .scope module, "uut" "bcd_to_excess3" 2 7, 3 1 0, S_0x5e44dc2ca0f0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "BCD";
+    .port_info 1 /OUTPUT 4 "EX3";
+v0x5e44dc2dd910_0 .net "BCD", 3 0, v0x5e44dc2f0780_0;  1 drivers
+v0x5e44dc2f0580_0 .net "EX3", 3 0, L_0x5e44dc2f0970;  alias, 1 drivers
+L_0x7b63fab56018 .functor BUFT 1, C4<0011>, C4<0>, C4<0>, C4<0>;
+v0x5e44dc2f0660_0 .net/2u *"_ivl_0", 3 0, L_0x7b63fab56018;  1 drivers
+L_0x5e44dc2f0970 .arith/sum 4, v0x5e44dc2f0780_0, L_0x7b63fab56018;
+    .scope S_0x5e44dc2ca0f0;
+T_0 ;
+    %vpi_call 2 14 "$display", "Time\011BCD\011EX3" {0 0 0};
+    %vpi_call 2 15 "$monitor", "%0t\011%d\011%b", $time, v0x5e44dc2f0780_0, v0x5e44dc2f0870_0 {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 9, 0, 4;
+    %store/vec4 v0x5e44dc2f0780_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 28 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "bcd_to_excess3tb.v";
+    "bcd_to_excess3.v";
