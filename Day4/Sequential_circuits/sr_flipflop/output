@@ -1,0 +1,81 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x614f347236b0 .scope module, "sr_flipfloptb" "sr_flipfloptb" 2 1;
+ .timescale 0 0;
+v0x614f34737c10_0 .var "CLK", 0 0;
+v0x614f34737cd0_0 .net "Q0", 0 0, L_0x614f34738260;  1 drivers
+v0x614f34737da0_0 .net "Q1", 0 0, L_0x614f347383c0;  1 drivers
+v0x614f34737ea0_0 .var "R", 0 0;
+v0x614f34737f70_0 .var "S", 0 0;
+S_0x614f34723840 .scope module, "uut" "sr_flipflop" 2 10, 3 1 0, S_0x614f347236b0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "S";
+    .port_info 1 /INPUT 1 "R";
+    .port_info 2 /INPUT 1 "CLK";
+    .port_info 3 /OUTPUT 1 "Q0";
+    .port_info 4 /OUTPUT 1 "Q1";
+L_0x614f34738060 .functor AND 1, v0x614f34737f70_0, v0x614f34737c10_0, C4<1>, C4<1>;
+L_0x614f347381a0 .functor AND 1, v0x614f34737ea0_0, v0x614f34737c10_0, C4<1>, C4<1>;
+L_0x614f34738260 .functor NOR 1, L_0x614f347381a0, L_0x614f347383c0, C4<0>, C4<0>;
+L_0x614f347383c0 .functor NOR 1, L_0x614f34738060, L_0x614f34738260, C4<0>, C4<0>;
+v0x614f34712040_0 .net "CLK", 0 0, v0x614f34737c10_0;  1 drivers
+v0x614f34737690_0 .net "Q0", 0 0, L_0x614f34738260;  alias, 1 drivers
+v0x614f34737750_0 .net "Q1", 0 0, L_0x614f347383c0;  alias, 1 drivers
+v0x614f34737820_0 .net "R", 0 0, v0x614f34737ea0_0;  1 drivers
+v0x614f347378e0_0 .net "R1", 0 0, L_0x614f347381a0;  1 drivers
+v0x614f347379f0_0 .net "S", 0 0, v0x614f34737f70_0;  1 drivers
+v0x614f34737ab0_0 .net "S1", 0 0, L_0x614f34738060;  1 drivers
+    .scope S_0x614f347236b0;
+T_0 ;
+    %vpi_call 2 20 "$display", "CLK S R | Q0 Q1" {0 0 0};
+    %vpi_call 2 21 "$monitor", "%b   %b %b |  %b   %b", v0x614f34737c10_0, v0x614f34737f70_0, v0x614f34737ea0_0, v0x614f34737cd0_0, v0x614f34737da0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737c10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x614f34737c10_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x614f34737f70_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x614f34737ea0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 48 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "sr_flipfloptb.v";
+    "sr_flipflop.v";
