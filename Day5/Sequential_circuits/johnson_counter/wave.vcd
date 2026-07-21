@@ -1,0 +1,135 @@
+$date
+	Tue Jul 21 12:38:06 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module johnson_countertb $end
+$var wire 4 ! Q0 [3:0] $end
+$var reg 1 " CLK $end
+$scope module uut $end
+$var wire 1 " CLK $end
+$var reg 4 # Q0 [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 #
+0"
+b0 !
+$end
+#5
+b1 !
+b1 #
+1"
+#10
+0"
+#15
+b11 !
+b11 #
+1"
+#20
+0"
+#25
+b111 !
+b111 #
+1"
+#30
+0"
+#35
+b1111 !
+b1111 #
+1"
+#40
+0"
+#45
+b1110 !
+b1110 #
+1"
+#50
+0"
+#55
+b1100 !
+b1100 #
+1"
+#60
+0"
+#65
+b1000 !
+b1000 #
+1"
+#70
+0"
+#75
+b0 !
+b0 #
+1"
+#80
+0"
+#85
+b1 !
+b1 #
+1"
+#90
+0"
+#95
+b11 !
+b11 #
+1"
+#100
+0"
+#105
+b111 !
+b111 #
+1"
+#110
+0"
+#115
+b1111 !
+b1111 #
+1"
+#120
+0"
+#125
+b1110 !
+b1110 #
+1"
+#130
+0"
+#135
+b1100 !
+b1100 #
+1"
+#140
+0"
+#145
+b1000 !
+b1000 #
+1"
+#150
+0"
+#155
+b0 !
+b0 #
+1"
+#160
+0"
+#165
+b1 !
+b1 #
+1"
+#170
+0"
+#175
+b11 !
+b11 #
+1"
+#180
+0"
