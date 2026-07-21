@@ -1,0 +1,49 @@
+$date
+	Tue Jul 21 11:41:04 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module down_counter_2bittb $end
+$scope module uut $end
+$var wire 1 ! CLK $end
+$var reg 2 " Q0 [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b11 "
+0!
+$end
+#5
+b10 "
+1!
+#10
+0!
+#15
+b1 "
+1!
+#20
+0!
+#25
+b0 "
+1!
+#30
+0!
+#35
+b11 "
+1!
+#40
+0!
+#45
+b10 "
+1!
+#50
+0!

@@ -1,0 +1,30 @@
+module down_counter_2bittb;
+
+reg CLK;
+wire [1:0] Q0;
+
+down_counter_2bit uut(
+    .CLK(CLK),
+    .Q0(Q0)
+);
+
+always
+begin
+    #5 CLK = ~CLK;
+end
+
+initial
+begin
+    $dumpfile("wave.vcd");
+    $dumpvars(0, uut);
+
+    CLK = 0;
+
+    $display("Time\tCLK\tQ0");
+    $monitor("%0t\t%b\t%b",$time,CLK,Q0);
+
+    #50;
+    $finish;
+end
+
+endmodule
