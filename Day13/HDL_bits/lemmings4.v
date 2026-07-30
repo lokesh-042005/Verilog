@@ -1,6 +1,6 @@
 module top_module(
     input clk,
-    input areset,    
+    input areset,
     input bump_left,
     input bump_right,
     input ground,
@@ -10,109 +10,97 @@ module top_module(
     output aaah,
     output digging );
 
-    parameter WL = 3'd0,
-              WR = 3'd1,
-              FL = 3'd2,
-              FR = 3'd3,
-              DL = 3'd4,
-              DR = 3'd5,
-              SPLAT = 3'd6;
+    parameter LEFT     = 3'd0,
+              RIGHT    = 3'd1,
+              FALL_L   = 3'd2,
+              FALL_R   = 3'd3,
+              DIG_L    = 3'd4,
+              DIG_R    = 3'd5,
+              SPLAT    = 3'd6;
 
-    reg [2:0] state, next_state;
-    reg [5:0] fall_count;
+    reg [2:0] state, next;
+    reg [4:0] cnt;
 
-    always @(posedge clk or posedge areset) begin
-        if (areset)
-            state <= WL;
+    // Falling counter
+    always @(posedge clk) begin
+        if ((next == FALL_L) || (next == FALL_R))
+            cnt <= (cnt == 5'd21) ? cnt : cnt + 1'b1;
         else
-            state <= next_state;
+            cnt <= 5'd0;
     end
 
+    // State register
     always @(posedge clk or posedge areset) begin
         if (areset)
-            fall_count <= 0;
-        else begin
-            case (state)
-                FL, FR:
-                    if (!ground)
-                        fall_count <= fall_count + 1;
-                    else
-                        fall_count <= 0;
-                default:
-                    fall_count <= 0;
-            endcase
-        end
+            state <= LEFT;
+        else
+            state <= next;
     end
 
+    // Next-state logic
     always @(*) begin
-        case(state)
+        case (state)
 
-            WL: begin
-                if (!ground)
-                    next_state = FL;
-                else if (dig)
-                    next_state = DL;
-                else if (bump_left)
-                    next_state = WR;
-                else
-                    next_state = WL;
-            end
+            LEFT:
+                casez ({ground,dig,bump_left,bump_right})
+                    4'b0???: next = FALL_L;
+                    4'b11??: next = DIG_L;
+                    4'b101?: next = RIGHT;
+                    4'b100?: next = LEFT;
+                    default: next = state;
+                endcase
 
-            WR: begin
-                if (!ground)
-                    next_state = FR;
-                else if (dig)
-                    next_state = DR;
-                else if (bump_right)
-                    next_state = WL;
-                else
-                    next_state = WR;
-            end
+            RIGHT:
+                casez ({ground,dig,bump_left,bump_right})
+                    4'b0???: next = FALL_R;
+                    4'b11??: next = DIG_R;
+                    4'b10?1: next = LEFT;
+                    4'b10?0: next = RIGHT;
+                    default: next = state;
+                endcase
 
-            FL: begin
-                if (!ground)
-                    next_state = FL;
-                else if (fall_count > 19)
-                    next_state = SPLAT;
+            FALL_L:
+                if (cnt == 5'd21 && ground)
+                    next = SPLAT;
                 else
-                    next_state = WL;
-            end
+                    casez ({ground,dig,bump_left,bump_right})
+                        4'b1???: next = LEFT;
+                        default: next = FALL_L;
+                    endcase
 
-            FR: begin
-                if (!ground)
-                    next_state = FR;
-                else if (fall_count > 19)
-                    next_state = SPLAT;
+            FALL_R:
+                if (cnt == 5'd21 && ground)
+                    next = SPLAT;
                 else
-                    next_state = WR;
-            end
+                    casez ({ground,dig,bump_left,bump_right})
+                        4'b1???: next = RIGHT;
+                        default: next = FALL_R;
+                    endcase
 
-            DL: begin
-                if (!ground)
-                    next_state = FL;
-                else
-                    next_state = DL;
-            end
+            DIG_L:
+                casez ({ground,dig,bump_left,bump_right})
+                    4'b0???: next = FALL_L;
+                    default: next = DIG_L;
+                endcase
 
-            DR: begin
-                if (!ground)
-                    next_state = FR;
-                else
-                    next_state = DR;
-            end
+            DIG_R:
+                casez ({ground,dig,bump_left,bump_right})
+                    4'b0???: next = FALL_R;
+                    default: next = DIG_R;
+                endcase
 
             SPLAT:
-                next_state = SPLAT;
+                next = SPLAT;
 
             default:
-                next_state = WL;
-
+                next = LEFT;
         endcase
     end
 
-    assign walk_left  = (state == WL);
-    assign walk_right = (state == WR);
-    assign aaah       = (state == FL) || (state == FR);
-    assign digging    = (state == DL) || (state == DR);
+    // Output logic
+    assign walk_left  = (state == LEFT);
+    assign walk_right = (state == RIGHT);
+    assign aaah       = (state == FALL_L) || (state == FALL_R);
+    assign digging    = (state == DIG_L) || (state == DIG_R);
 
-endmodule
+endmodule        
